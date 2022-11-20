@@ -9,7 +9,6 @@
 /*   Updated: 2022/11/20 19:55:41 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -27,16 +26,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		*tmp++ = *s2++;
 	*tmp = '\0';
 	return (s3);
-}
-
-int	main(void)
-{
-	char	str1[] = "Wake up NEO! ";
-	char	str2[] = "Follow the White Rabbit..";
-	char	*str3;
-
-	str3 = ft_strjoin(str1, str2);
-	printf("str3: '%s'\n", str3);
-	free(str3);
-	return (0);
 }
