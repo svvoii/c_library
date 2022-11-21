@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbocanci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:29:45 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/17 19:42:32 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/21 09:50:48 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strdup(const char *s)
 {
 	size_t		i;
-	char				*dup;
+	char		*dup;
 
 	dup = malloc(sizeof(char) * ft_strlen((char *)s) + 1);
 	if (!dup)
