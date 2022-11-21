@@ -4,8 +4,9 @@
 /* ft_itoa.c test
 int	main(void)
 {
-	int	num = 1;
-	//int   num = -2147483648;
+	//int	num = 1;
+	//int   num = -1234567890;
+	int   num = -2147483648;
 	//int   num = 2147483647;
 	char	*str;
 	printf("num: '%d'\n", num);
@@ -18,23 +19,31 @@ int	main(void)
 /* ft_split.c test
 int	main(void)
 {
-	char	str[] = "Wake up NEO, and, follow the white, Rabbit..";
-	char	sep = ' ';
+	char	str[] = "Wake up NEO, ... follow the white, Rabbit..";
+	char	sep = '.';
 	char	**sub_strings;
+	char	**sub;
 	int		i = 0;
 	printf("str: '%s'\n", str);
 	sub_strings = ft_split(str, sep);
-	while (sub_strings[i])
+	printf("Back to main\n");
+	sub = sub_strings;
+	//while (i < n)
+	while (sub[i])
 	{
-		printf("sub_s[%d]: '%s'\n", i, sub_strings[i]);
+		printf("sub_s[%d]: '%s'\t\t@ '%p'\n", i, sub[i], sub[i]);
 		i++;
 	}
 	i = 0;
-	while (sub_strings[i])
+	sub = sub_strings;
+	//while (i < n)
+	while (*sub)
 	{
-		free(sub_strings[i]);
-		i++;
+		free(*sub);
+		printf("free @ '%p'\n", *sub);
+		sub++;
 	}
+	printf("end free\tsub_strings @ '%p'\n", sub_strings);
 	free(sub_strings);
 	return (0);
 }
