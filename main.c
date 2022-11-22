@@ -3,6 +3,27 @@
 #include <stdlib.h>
 #include "libft.h"
 
+/*typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+*/
+int	main(void)
+{
+	char	str[] = "Wake up Neo..";
+	char	*t_cont;
+	t_list	*node;
+
+	node = ft_lstnew(str);
+	t_cont = node->content;
+	printf("node: @ '%p'\n", node);
+	printf("node->content:'%s'\n", t_cont);
+	printf("node->content: @ '%p'\n", t_cont);
+	printf("node->next: @ '%p'\n", node->next);
+	free(node);
+	return (0);
+}
 /* ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c test
 int	main(void)
 {

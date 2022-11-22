@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 14:07:59 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/22 21:21:32 by sbocanci         ###   ########.fr       */
+/*   Created: 2022/11/22 20:38:58 by sbocanci          #+#    #+#             */
+/*   Updated: 2022/11/22 21:24:30 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (!s || !fd)
-		return ;
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	t_list	*tmp;
+	t_list	*new;
+
+	tmp = lst;
+	new = malloc(sizeof(t_list));
+	lst = new;
+	while (tmp->next)
+	{
+		new->content = f(tmp->content);
+		new->next = tmp;
+		del(tmp->content);
+		tmp = tmp->next;
+	}
+	return (lst);
 }
