@@ -1,6 +1,57 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 #include "libft.h"
 
+/* ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c test
+int	main(void)
+{
+	//char	s[] = "\0";
+	//char	s[] = "Wake up neo..";
+	int		num1 = 2147483647;
+	int		num2 = -2147483648;
+	int		num3 = 2147483648;
+	int		num4 = 0;
+	
+	ft_putnbr_fd(num1, 1);
+	printf("\n");
+	ft_putnbr_fd(num2, 1);
+	printf("\n");
+	ft_putnbr_fd(num3, 1);
+	printf("\n");
+	ft_putnbr_fd(num4, 1);
+	printf("\n");
+	//ft_putchar_fd(s[0], 1);
+	//printf("\n");
+	//ft_putstr_fd(s, 1);
+	//printf("\n");
+	//ft_putendl_fd(s, 1);
+	return (0);
+}
+*/
+/* ft_strmapi.c - ft_striteri.c test
+void	f(unsigned int i, char *c)
+{
+	*c += 1;
+	printf("%d\t", i);
+	printf("%c @ '%p'\n", *c, c);
+}
+
+int	main(void)
+{
+	char	s[] = "wake up neo..";
+
+	printf("s:\n");
+	for (size_t i = 0; i < ft_strlen(s); i++)
+	{
+		printf("%ld\t", i);
+		printf("%c @ '%p'\n", s[i], &s[i]);
+	}
+	printf("\n");
+	ft_striteri(s, f);
+	return (0);	
+}
+*/
 /* ft_itoa.c test
 int	main(void)
 {
