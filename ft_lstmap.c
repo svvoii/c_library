@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sv <sv@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:38:58 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/23 09:11:30 by sv               ###   ########.fr       */
+/*   Updated: 2022/11/23 15:34:21 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	tmp = new;
 	while (lst->next)
 	{
-		lst lst->next;
+		lst = lst->next;
 		tmp->next = ft_lstnew(ft_strdup(f(lst->content)));
 		if (!(tmp->next))
 		{

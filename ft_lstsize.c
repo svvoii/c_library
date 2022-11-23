@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:49:16 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/22 21:10:57 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:25:30 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int	ft_lstsize(t_list *lst)
 		lst = lst->next;
 		i++;
 	}
-	return (i);
+	return (++i);
 }

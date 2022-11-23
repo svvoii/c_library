@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include "libft.h"
 
-/*typedef struct s_list
+/* ft_lstnew.c test
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -11,17 +12,66 @@
 */
 int	main(void)
 {
-	char	str[] = "Wake up Neo..";
-	char	*t_cont;
+	char	s0[] = "Wake up Neo..";
+	char	s1[] = "Follow the White Rabbit..";
+	char	s2[] = "Run Forest.. run";
+	char	s3[] = "There is no faith..";
+	char	s4[] = "..but the one we chose for ourselves.";
 	t_list	*node;
+	t_list	*list;
+	t_list	*tmp;
+	t_list	*last;
 
-	node = ft_lstnew(str);
-	t_cont = node->content;
-	printf("node: @ '%p'\n", node);
-	printf("node->content:'%s'\n", t_cont);
-	printf("node->content: @ '%p'\n", t_cont);
-	printf("node->next: @ '%p'\n", node->next);
-	free(node);
+	list = ft_lstnew(s0);
+	tmp = list;
+	printf("list start @ '%p'\n", tmp);
+
+	node = ft_lstnew(s1);
+	tmp->next = node;
+
+	node = ft_lstnew(s2);
+	tmp->next->next = node;
+
+	node = ft_lstnew(s3);
+	tmp->next->next->next = node;
+
+	node = ft_lstnew(s4);
+	tmp->next->next->next->next = node;
+
+	// ft_lstnew.c test
+	ft_lstadd_front(&list, ft_lstnew("This node was added to beginning of thelist."));
+	printf("\\/\n");
+	printf("ft_lstadd_front.c:\nlist start @ '%p'\n", list);
+	printf("\n\\/\n");
+
+	// ft_lstsize.c test
+	printf("ft_lstsize.c\nnodes total: '%d'\n", ft_lstsize(list));	
+	printf("\n\\/\n");
+
+	// ft_lstlast.c test
+	last = ft_lstlast(list);	
+	printf("ft_lstlast.c\n");	
+	printf("last node @ '%p'\n", last);	
+	printf("\n\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\n");
+
+	node = list;
+	//while (node)
+	for (int i = 1; i <= ft_lstsize(list); i++)
+	{
+		printf("%d)\nnode	  : @ '%p'\n", i, node);
+		printf("node->next: @ '%p'\n", node->next);
+		printf("->content:'%s' @ '%p'\n", (char *)node->content, node->content);
+		printf("\n");
+		node = node->next;
+	}
+	
+	tmp = list;
+	while (tmp)
+	{
+		node = tmp->next;
+		free(tmp);
+		tmp = node;
+	}
 	return (0);
 }
 /* ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c test
