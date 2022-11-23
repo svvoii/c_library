@@ -38,7 +38,7 @@ int	main(void)
 	node = ft_lstnew(s4);
 	tmp->next->next->next->next = node;
 
-	// ft_lstnew.c test
+	// ft_lstadd_front.c test
 	ft_lstadd_front(&list, ft_lstnew("This node was added to beginning of thelist."));
 	printf("\\/\n");
 	printf("ft_lstadd_front.c:\nlist start @ '%p'\n", list);
@@ -52,6 +52,14 @@ int	main(void)
 	last = ft_lstlast(list);	
 	printf("ft_lstlast.c\n");	
 	printf("last node @ '%p'\n", last);	
+	printf("\n\\/\n");
+
+	// ft_lstadd_back.c test
+	printf("ft_lstadd_back.c\nlist was @ '%p'\n", list);	
+	ft_lstadd_back(&list, ft_lstnew("This node is added to the end of the list"));
+	last = ft_lstlast(list);	
+	printf("list @ '%p'\tlast @ '%p'\n", list, last);	
+
 	printf("\n\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\n");
 
 	node = list;
