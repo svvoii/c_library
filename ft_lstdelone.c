@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sv <sv@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:07:16 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/22 21:17:55 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/23 09:19:02 by sv               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	del(lst->content);
+	if (!lst)
+		return ;
+	if (del && lst->content)
+		del(lst->content);
 	free(lst);
+	lst = NULL;
 }
