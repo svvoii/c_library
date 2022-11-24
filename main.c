@@ -20,6 +20,7 @@ int	main(void)
 	char	s3[] = "There is no faith..";
 	char	s4[] = "..but the one we chose for ourselves.";
 	char	s5[] = "This node is added to the end of the list";
+	char	s6[] = "This node was added to beginning of thelist.";
 	t_list	*node;
 	t_list	*list;
 	t_list	*tmp;
@@ -42,7 +43,7 @@ int	main(void)
 	tmp->next->next->next->next = node;
 
 	// ft_lstadd_front.c test
-	ft_lstadd_front(&list, ft_lstnew("This node was added to beginning of thelist."));
+	ft_lstadd_front(&list, ft_lstnew(s6));
 	printf("\\/\n");
 	printf("ft_lstadd_front.c:\nlist start @ '%p'\n", list);
 	printf("\n\\/\n");
@@ -76,26 +77,14 @@ int	main(void)
 	}
 
 	// ft_lstclear.c ft_lstdelone.c test
-	tmp = list->next->next->next->next;
-	printf("clear starting from node with text '%s'\n", (char *)tmp->content);
-	printf("@ '%p'\n", tmp);
-	ft_lstclear(&tmp, t_bzero);
+	printf("clear starting from node with text '%s'\n", (char *)list->content);
+	printf("@ '%p'\n", list);
+	ft_lstclear(&list, t_bzero);
 	printf("end ft_clear\n\\/\n");
 	
 	// ft_lstsize.c test
-	printf("list @ '%p'\ttmp '%p'\n", list, tmp);
-	//printf("ft_lstsize.c\nnodes total: '%d'\n", ft_lstsize(list));	
-
-	node = list;
-	for (int i = 1; i <= ft_lstsize(list); i++)
-	{
-		printf("%d)\nnode	  : @ '%p'\n", i, node);
-		printf("node->next: @ '%p'\n", node->next);
-		printf("->content:'%s' @ '%p'\n", (char *)node->content, node->content);
-		printf("\n");
-		node = node->next;
-	}
-
+	printf("list @ '%p'\n", list);
+	/*
 	tmp = list;
 	while (tmp)
 	{
@@ -104,6 +93,7 @@ int	main(void)
 		tmp = node;
 	}
 	return (0);
+	*/
 }
 void	t_bzero(void *s)
 {
