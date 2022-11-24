@@ -4,12 +4,7 @@
 #include "libft.h"
 
 /* ft_lstnew.c test
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-*/
+
 void	t_bzero(void *s);
 
 int	main(void)
@@ -84,7 +79,7 @@ int	main(void)
 	
 	// ft_lstsize.c test
 	printf("list @ '%p'\n", list);
-	/*
+
 	tmp = list;
 	while (tmp)
 	{
@@ -93,7 +88,6 @@ int	main(void)
 		tmp = node;
 	}
 	return (0);
-	*/
 }
 void	t_bzero(void *s)
 {
@@ -109,6 +103,7 @@ void	t_bzero(void *s)
 	}
 	printf("end t_bzero\n\n");
 }
+*/
 /* ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c test
 int	main(void)
 {
