@@ -10,6 +10,8 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 */
+void	t_bzero(void *s);
+
 int	main(void)
 {
 	char	s0[] = "Wake up Neo..";
@@ -17,6 +19,7 @@ int	main(void)
 	char	s2[] = "Run Forest.. run";
 	char	s3[] = "There is no faith..";
 	char	s4[] = "..but the one we chose for ourselves.";
+	char	s5[] = "This node is added to the end of the list";
 	t_list	*node;
 	t_list	*list;
 	t_list	*tmp;
@@ -44,26 +47,25 @@ int	main(void)
 	printf("ft_lstadd_front.c:\nlist start @ '%p'\n", list);
 	printf("\n\\/\n");
 
-	// ft_lstsize.c test
-	printf("ft_lstsize.c\nnodes total: '%d'\n", ft_lstsize(list));	
-	printf("\n\\/\n");
-
 	// ft_lstlast.c test
 	last = ft_lstlast(list);	
 	printf("ft_lstlast.c\n");	
-	printf("last node @ '%p'\n", last);	
+	printf("last node @ '%p'\tlist @ '%p'\n", last, list);	
 	printf("\n\\/\n");
 
 	// ft_lstadd_back.c test
-	printf("ft_lstadd_back.c\nlist was @ '%p'\n", list);	
-	ft_lstadd_back(&list, ft_lstnew("This node is added to the end of the list"));
+	printf("ft_lstadd_back.c\n");	
+	ft_lstadd_back(&list, ft_lstnew(s5));
 	last = ft_lstlast(list);	
 	printf("list @ '%p'\tlast @ '%p'\n", list, last);	
+	printf("\n\\/\n");
 
-	printf("\n\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\n");
+	// ft_lstsize.c test
+	printf("ft_lstsize.c\nnodes total: '%d'\n", ft_lstsize(list));	
+
+	printf("\n\\/ \\/ \\/ \\/ \\/ \\/ \\/ \\/ \\/ \\/ \\/ \\/ \\/ \\/ \\/\n");
 
 	node = list;
-	//while (node)
 	for (int i = 1; i <= ft_lstsize(list); i++)
 	{
 		printf("%d)\nnode	  : @ '%p'\n", i, node);
@@ -72,7 +74,28 @@ int	main(void)
 		printf("\n");
 		node = node->next;
 	}
+
+	// ft_lstclear.c ft_lstdelone.c test
+	tmp = list->next->next->next->next;
+	printf("clear starting from node with text '%s'\n", (char *)tmp->content);
+	printf("@ '%p'\n", tmp);
+	ft_lstclear(&tmp, t_bzero);
+	printf("end ft_clear\n\\/\n");
 	
+	// ft_lstsize.c test
+	printf("list @ '%p'\ttmp '%p'\n", list, tmp);
+	//printf("ft_lstsize.c\nnodes total: '%d'\n", ft_lstsize(list));	
+
+	node = list;
+	for (int i = 1; i <= ft_lstsize(list); i++)
+	{
+		printf("%d)\nnode	  : @ '%p'\n", i, node);
+		printf("node->next: @ '%p'\n", node->next);
+		printf("->content:'%s' @ '%p'\n", (char *)node->content, node->content);
+		printf("\n");
+		node = node->next;
+	}
+
 	tmp = list;
 	while (tmp)
 	{
@@ -81,6 +104,20 @@ int	main(void)
 		tmp = node;
 	}
 	return (0);
+}
+void	t_bzero(void *s)
+{
+	char	*str;
+
+	str = s;
+	printf("t_bzero\n*str: '%s'\n", str);
+	while (*str)
+	{
+		printf("%c|", *str);
+		*str = 0;
+		str++;
+	}
+	printf("end t_bzero\n\n");
 }
 /* ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c test
 int	main(void)
