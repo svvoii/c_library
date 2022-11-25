@@ -3,31 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbocanci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:29:45 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/17 19:51:52 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:18:22 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	const char	*b;
-	const char	*l;
+	size_t		i;
+	size_t		l_len;
 
-	while (*big != '\0' && len--)
+	if (!*little)
+		return ((char *)big);
+	l_len = ft_strlen(little);
+	i = 0;
+	while (big[i] && (l_len + i) <= len)
 	{
-		b = big;
-		l = little;
-		while (*b == *l || *l == '\0')
-		{
-			if (*l == '\0')
-				return ((char *)big);
-			b++;
-			l++;
-		}
-		big++;
+		if (ft_strncmp(big + i, little, l_len) == 0)
+			return ((char *)big + i);
+		i++;
 	}
 	return (NULL);
 }

@@ -171,13 +171,13 @@ int	main(void)
 /* ft_split.c test
 int	main(void)
 {
-	char	str[] = "Wake up NEO, ... follow the white, Rabbit..";
-	char	sep = '.';
+	//char	str[] = "Wake up NEO, ... follow the white, Rabbit..";
+	//char	sep = '.';
 	char	**sub_strings;
 	char	**sub;
 	int		i = 0;
-	printf("str: '%s'\n", str);
-	sub_strings = ft_split(str, sep);
+	//printf("str: '%s'\n", str);
+	sub_strings = ft_split("     tripouille   42  ", ' ');
 	printf("Back to main\n");
 	sub = sub_strings;
 	//while (i < n)

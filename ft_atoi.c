@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:29:45 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/24 16:40:16 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:25:10 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_atoi(const char *str)
 {
-	int	sign;
-	int	res;
+	unsigned int	sign;
+	unsigned int	res;
 
 	while ((*str >= 9 && *str <= 13) || (*str == 32))
 		str++;
@@ -26,6 +26,8 @@ int	ft_atoi(const char *str)
 		sign *= -1;
 		str++;
 	}
+	else if (*str == '+')
+		str++;
 	while (*str >= '0' && *str <= '9')
 	{
 		res *= 10;
