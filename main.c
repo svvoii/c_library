@@ -169,6 +169,7 @@ int	main(void)
 }
 */
 /* ft_split.c test
+*/
 int	main(void)
 {
 	//char	str[] = "Wake up NEO, ... follow the white, Rabbit..";
@@ -189,17 +190,16 @@ int	main(void)
 	i = 0;
 	sub = sub_strings;
 	//while (i < n)
-	while (*sub)
+	while (sub[i])
 	{
-		free(*sub);
-		printf("free @ '%p'\n", *sub);
-		sub++;
+		free(sub[i]);
+		printf("free @ '%p'\n", sub[i]);
+		i++;
 	}
 	printf("end free\tsub_strings @ '%p'\n", sub_strings);
 	free(sub_strings);
 	return (0);
 }
-*/
 /* ft_strtrim.c test
 int     main(void)
 {

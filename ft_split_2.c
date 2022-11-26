@@ -3,67 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: serge <serge@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:14:35 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/26 07:43:46 by serge            ###   ########.fr       */
+/*   Updated: 2022/11/25 20:35:49 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-size_t	words_count(char const *s, char c)
+size_t	sub_str(char const *s, char c)
 {
-	size_t		words;
-	size_t		i;
-	size_t		tmp;
+	size_t		n;
 
-	words = 0;
-	i = 0;
-	while (s[i])
+	n = 0;
+	while (*s)
 	{
-		while (s[i] == c)	
-			i++;
-		tmp = i;
-		while (s[i] != c)
-			i++;
-		if (i > tmp)
-			words++;
+		while (*s == c && *s)
+			s++;
+		if (*s != c)
+			n++;
+		while (*s != c && *s)
+			s++;
 	}
-	return (words);
+	return (++n);
 }
 
 char	**split(char **split, char const *s, char c)
 {
+	int			n;
 	int			i;
-	int			j;
-	int			w;
 
+	n = 0;
 	i = 0;
-	w = 0;
-	while (s[i])
+	while (*s)
 	{
-		while (s[i] == c)	
+		while (*s == c && *s)
+			s++;
+		i = 0;
+		while (s[i] != c && s[i])
 			i++;
-		j = 0;	
-		while (s[i + j] != c)
-			j++;
-		if (j > 0)
-			split[w++] = ft_substr(&s[i], 0, j);
+		split[n++] = ft_substr(s, 0, i);
+		while (*s != c && *s)
+			s++;
 	}
-	split[w] = 0;
+	split[n] = (void *)0;
 	return (split);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**spl;
-	size_t		words;
 
-	words = words_count(s, c);
-	printf("words: '%ld'\n", words);
-	spl = malloc(sizeof(char *) * words);
+	spl = malloc(sizeof(char *) * sub_str(s, c));
 	if (!spl)
 		return (NULL);
 	spl = split(spl, s, c);
