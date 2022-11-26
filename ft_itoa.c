@@ -6,34 +6,29 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:47:09 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/21 17:40:49 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:59:08 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*i_to_a(int n)
+char	*i_to_a(long nbr, int len)
 {
 	char	*str;
-	int		tmp;
-	int		len;
 
-	tmp = n;
-	len = 0;
-	while (tmp >= 1)
+	if (nbr < 0)
 	{
-		tmp /= 10;
+		nbr *= -1;
 		len++;
 	}
-	str = malloc(sizeof(char) * len);
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	tmp = n;
 	str[len] = '\0';
 	while (--len >= 0)
 	{
-		str[len] = (tmp % 10) + '0';
-		tmp /= 10;
+		str[len] = (nbr % 10) + '0';
+		nbr /= 10;
 	}
 	return (str);
 }
@@ -41,20 +36,23 @@ char	*i_to_a(int n)
 char	*ft_itoa(int n)
 {
 	char	*str;
-	int		negative;
+	long	nbr;
+	int		len;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	negative = 0;
-	if (n < 0)
+	nbr = n;
+	len = 0;
+	if (nbr == 0)
+		return (ft_strdup("0"));
+	else if (nbr < 0)
+		nbr *= -1;
+	while (nbr >= 1)
 	{
-		n *= -1;
-		negative = 1;
+		nbr /= 10;
+		len++;
 	}
-	str = i_to_a(n);
-	if (negative)
+	nbr = n;
+	str = i_to_a(nbr, len);
+	if (n < 0)
 		str[0] = '-';
-	else if (n > 0)
-		str = ft_memmove(str, str + 1, ft_strlen(str));
 	return (str);
 }

@@ -130,7 +130,8 @@ int	main(void)
 	return (0);
 }
 */
-/* ft_strmapi.c - ft_striteri.c test
+/*
+ft_strmapi.c - ft_striteri.c test
 void	f(unsigned int i, char *c)
 {
 	*c += 1;
@@ -169,7 +170,6 @@ int	main(void)
 }
 */
 /* ft_split.c test
-*/
 int	main(void)
 {
 	//char	str[] = "Wake up NEO, ... follow the white, Rabbit..";
@@ -179,7 +179,7 @@ int	main(void)
 	int		i = 0;
 	//printf("str: '%s'\n", str);
 	sub_strings = ft_split("     tripouille   42  ", ' ');
-	printf("Back to main\n");
+	printf("\nBack to main\n-----Read:\n");
 	sub = sub_strings;
 	//while (i < n)
 	while (sub[i])
@@ -190,16 +190,18 @@ int	main(void)
 	i = 0;
 	sub = sub_strings;
 	//while (i < n)
+	printf("-----Free:\n");
 	while (sub[i])
 	{
 		free(sub[i]);
-		printf("free @ '%p'\n", sub[i]);
+		printf("free sub[%d]@ '%p'\n", i, sub[i]);
 		i++;
 	}
 	printf("end free\tsub_strings @ '%p'\n", sub_strings);
 	free(sub_strings);
 	return (0);
 }
+*/
 /* ft_strtrim.c test
 int     main(void)
 {

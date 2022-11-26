@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sv <sv@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:14:35 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/26 08:26:42 by sv               ###   ########.fr       */
+/*   Updated: 2022/11/26 15:10:46 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 size_t	words_count(char const *s, char c)
 {
@@ -22,18 +21,14 @@ size_t	words_count(char const *s, char c)
 
 	words = 0;
 	i = 0;
+	tmp = 0;
 	len = ft_strlen(s);
-	printf("strlen: '%ld' > s: '%s' > c:'%c'\n", len, s, c);
 	while (i < len)
 	{
-		while (s[i] == c)	
-		{
-			printf("%c|", s[i]);
+		while (s[i] == c && i < len)
 			i++;
-		}
-		printf("\n");
 		tmp = i;
-		while (s[i] != c)
+		while (s[i] != c && i < len)
 			i++;
 		if (i > tmp)
 			words++;
@@ -41,7 +36,7 @@ size_t	words_count(char const *s, char c)
 	return (words);
 }
 
-char	**split(char **split, char const *s, char c)
+void	*split(char **split, char const *s, char c)
 {
 	int			i;
 	int			j;
@@ -53,33 +48,36 @@ char	**split(char **split, char const *s, char c)
 	len = ft_strlen(s);
 	while (i < len)
 	{
-		while (s[i] == c)	
+		while (s[i] == c)
 			i++;
-		j = 0;	
+		j = 0;
 		while (s[i + j] != c && i + j < len)
-		{
-			printf("%c|", s[i + j]);
 			j++;
-		}
-		printf("\n");
 		if (j > 0)
-			split[w++] = ft_substr(&s[i], 0, j);
+		{
+			split[w] = (char *)malloc(sizeof(*split[w]) * (j + 1));
+			ft_memcpy(split[w], &s[i], j);
+			split[w][j] = '\0';
+			w++;
+		}
 		i += j;
 	}
-	split[w] = 0;
-	return (split);
+	return ((void *)1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**spl;
+	char		**spl;
 	size_t		words;
 
+	if (!s)
+		return (NULL);
 	words = words_count(s, c);
-	printf("words: '%ld'\n", words);
-	spl = malloc(sizeof(char *) * words);
+	spl = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!spl)
 		return (NULL);
-	spl = split(spl, s, c);
+	spl[words] = (void *)0;
+	if (words > 0)
+		split(spl, s, c);
 	return (spl);
 }

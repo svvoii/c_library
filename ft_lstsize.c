@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:49:16 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/24 15:28:43 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/26 16:13:34 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	ft_lstsize(t_list *lst)
 
 	tmp = lst;
 	i = 0;
-	while (tmp->next)
+	while (tmp)
 	{
 		tmp = tmp->next;
 		i++;
 	}
-	return (++i);
+	return (i);
 }

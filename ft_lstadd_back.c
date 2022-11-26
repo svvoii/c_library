@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:59:35 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/24 18:11:23 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/26 16:51:57 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*tmp;
-
 	if (!*lst)
 		*lst = new;
-	tmp = *lst;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;
+	else
+	{
+		while ((*lst)->next)
+			*lst = (*lst)->next;
+		(*lst)->next = new;
+	}
+	new->next = NULL;
 }
