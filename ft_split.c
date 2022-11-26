@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: serge <serge@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sv <sv@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:14:35 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/26 07:43:46 by serge            ###   ########.fr       */
+/*   Updated: 2022/11/26 08:26:42 by sv               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,20 @@ size_t	words_count(char const *s, char c)
 	size_t		words;
 	size_t		i;
 	size_t		tmp;
+	size_t		len;
 
 	words = 0;
 	i = 0;
-	while (s[i])
+	len = ft_strlen(s);
+	printf("strlen: '%ld' > s: '%s' > c:'%c'\n", len, s, c);
+	while (i < len)
 	{
 		while (s[i] == c)	
+		{
+			printf("%c|", s[i]);
 			i++;
+		}
+		printf("\n");
 		tmp = i;
 		while (s[i] != c)
 			i++;
@@ -39,18 +46,25 @@ char	**split(char **split, char const *s, char c)
 	int			i;
 	int			j;
 	int			w;
+	int			len;
 
 	i = 0;
 	w = 0;
-	while (s[i])
+	len = ft_strlen(s);
+	while (i < len)
 	{
 		while (s[i] == c)	
 			i++;
 		j = 0;	
-		while (s[i + j] != c)
+		while (s[i + j] != c && i + j < len)
+		{
+			printf("%c|", s[i + j]);
 			j++;
+		}
+		printf("\n");
 		if (j > 0)
 			split[w++] = ft_substr(&s[i], 0, j);
+		i += j;
 	}
 	split[w] = 0;
 	return (split);
