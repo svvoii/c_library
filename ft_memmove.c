@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:29:45 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/25 13:18:04 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/27 12:43:26 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	char		*last_d;
 	const char	*last_s;
 
+	if (dest == NULL && src == NULL)
+		return (NULL);
 	d = dest;
 	s = src;
 	last_d = d + (n - 1);
