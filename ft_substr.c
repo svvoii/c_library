@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:29:45 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/25 16:04:34 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:24:01 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t		i;
 	size_t		s_len;
 
+	if (!s)
+		return (NULL);
 	s_len = ft_strlen((char *)s);
 	if (s_len < start)
 		return (ft_strdup(""));

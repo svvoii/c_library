@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:33:14 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/27 13:15:42 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:51:32 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (!lst)
+	t_list	*tmp;
+
+	if (!lst || !f)
 		return ;
-	while (lst)
+	tmp = lst;
+	while (tmp)
 	{
-		(*f)(lst->content);
-		lst = lst->next;
+		(*f)(tmp->content);
+		tmp = tmp->next;
 	}
 }

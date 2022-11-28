@@ -241,3 +241,26 @@ int		main(void)
 	return (0);
 }
 */
+
+/* ft_strlcat.c test
+#include <stdio.h>
+#include <bsd/string.h>int	main(void)
+{
+	//char *str = "the cake is a lie !\0I'm hidden lol\r\n";
+	//char buff1[0xF00] = "there is no stars in the sky";
+	//char buff2[0xF00] = "there is no stars in the sky";
+	char b[0xF] = "nyan !";
+	//size_t max = ft_strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4;
+	size_t max = 0;
+	int		s_cat = 0;
+	int		fts_cat = 0;
+
+	s_cat = strlcat(((void *)0), b, max);
+	fts_cat = ft_strlcat(((void *)0), b, max);
+
+	printf("strlcat: \tlen: '%d'\n", s_cat);
+	printf("ft_strlcat: \tlen: '%d'\n", fts_cat);
+	return (0);
+}
+
+*/

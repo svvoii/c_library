@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 09:16:45 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/25 16:49:27 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:32:30 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*trimmed;
 
+	if (!s1 || !set)
+		return (NULL);
 	if (!*s1)
 		return (ft_strdup(""));
 	if (!*set)
@@ -38,13 +40,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (in_set(s1[i], set))
 		i++;
 	if (i == end)
-	{
-		trimmed = ft_strdup("");
-		if (!trimmed)
-			return (NULL);
-		else
-			return (trimmed);
-	}
+		return (ft_strdup(""));
 	while (in_set(s1[end - 1], set))
 		end--;
 	trimmed = ft_substr(s1, i, end - i);
