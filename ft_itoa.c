@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:47:09 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/27 16:34:44 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:28:53 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,9 @@ char	*ft_itoa(int n)
 	int		len;
 
 	nbr = n;
-	len = 0;
-	if (nbr <= 0)
+	len = 1;
+	if (nbr < 0)
 	{
-		if (nbr < 0)
-			len++;
 		len++;
 		nbr *= -1;
 	}

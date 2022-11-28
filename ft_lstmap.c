@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:38:58 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/23 15:34:21 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:56:08 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	while (lst->next)
 	{
 		lst = lst->next;
-		tmp->next = ft_lstnew(ft_strdup(f(lst->content)));
+		tmp->next = ft_lstnew(f(lst->content));
 		if (!(tmp->next))
 		{
 			ft_lstclear(&new, del);

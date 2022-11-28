@@ -6,7 +6,7 @@
 #    By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 16:15:30 by sbocanci          #+#    #+#              #
-#    Updated: 2022/11/28 09:34:49 by sbocanci         ###   ########.fr        #
+#    Updated: 2022/11/28 15:10:15 by sbocanci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,7 @@ $(OBJ_B):
 	$(C) $(SRC_B)
 	ar rcs $(NAME) $(OBJ_B)
 	ranlib $(NAME)
-so:
-	$(C) -nostartfiles -fPIC $(SRC) $(SRC_B)
-	gcc -nostartfiles -shared -o libft.so $(OBJ) $(OBJ_B)
-  
+
 clean:
 	rm -f *.o
 
