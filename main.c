@@ -268,15 +268,18 @@ int		main(void)
 #include <stdio.h>
 #include <stdint.h>
 #include <limits.h>
+
 int	main(void)
 {
 	void	*str1;
 	void	*str2;
 
-	str1 = calloc(0, SSIZE_MAX);
-	str2 = ft_calloc(0, SSIZE_MAX);
+	str1 = calloc(SSIZE_MAX, 0);
+	str2 = ft_calloc(SSIZE_MAX, 0);
 	printf("str1 @ '%p'\n", str1);
 	printf("str2 @ '%p'\n", str2);
+	printf("str1 '%s'\n", (char *)str1);
+	printf("str2 '%s'\n", (char *)str2);
 	free(str1);
 	free(str2);
 	return (0);
