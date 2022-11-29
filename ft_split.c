@@ -6,78 +6,82 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:14:35 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/26 15:10:46 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:50:48 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	words_count(char const *s, char c)
+static void	copy_word(char **spt, char const *s, size_t word, size_t len)
 {
-	size_t		words;
-	size_t		i;
-	size_t		tmp;
-	size_t		len;
+	size_t			i;
 
-	words = 0;
-	i = 0;
-	tmp = 0;
-	len = ft_strlen(s);
-	while (i < len)
+	spt[word] = (char *)malloc(sizeof(*spt[word]) * (len + 1));
+	if (!spt[word])
 	{
-		while (s[i] == c && i < len)
-			i++;
-		tmp = i;
-		while (s[i] != c && i < len)
-			i++;
-		if (i > tmp)
-			words++;
+		while (word--)
+			free(spt[word]);
+		free(spt[word]);
+		free(spt);
+		spt = NULL;
+		return ;
 	}
-	return (words);
+	i = 0;
+	while (i < len && s[i])
+	{
+		spt[word][i] = s[i];
+		i++;
+	}
+	spt[word][i] = '\0';
 }
 
-void	*split(char **split, char const *s, char c)
+static void	to_split(char **spt, char const *s, char c)
 {
-	int			i;
-	int			j;
-	int			w;
-	int			len;
+	size_t				i;
+	size_t				tmp;
+	size_t				word;
 
+	word = 0;
 	i = 0;
-	w = 0;
-	len = ft_strlen(s);
-	while (i < len)
+	tmp = 0;
+	while (i < ft_strlen(s))
 	{
-		while (s[i] == c)
+		while (s[i] == c && i < ft_strlen(s))
 			i++;
-		j = 0;
-		while (s[i + j] != c && i + j < len)
-			j++;
-		if (j > 0)
+		tmp = i;
+		while (s[i] != c && i < ft_strlen(s))
+			i++;
+		if (i > tmp)
 		{
-			split[w] = (char *)malloc(sizeof(*split[w]) * (j + 1));
-			ft_memcpy(split[w], &s[i], j);
-			split[w][j] = '\0';
-			w++;
+			copy_word(spt, &s[tmp], word, i - tmp);
+			word++;
 		}
-		i += j;
 	}
-	return ((void *)1);
+	spt[word] = (void *)0;
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char		**spl;
 	size_t		words;
+	size_t		i;
 
-	if (!s)
-		return (NULL);
-	words = words_count(s, c);
+	words = 0;
+	i = 0;
+	while (i < ft_strlen(s))
+	{
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			words++;
+		i++;
+	}
 	spl = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!spl)
 		return (NULL);
-	spl[words] = (void *)0;
-	if (words > 0)
-		split(spl, s, c);
+	if (words == 0)
+	{
+		spl[words] = (void *)0;
+		return (spl);
+	}
+	to_split(spl, s, c);
 	return (spl);
 }

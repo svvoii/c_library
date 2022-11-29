@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:29:45 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/27 13:04:14 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:54:13 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	char	*cal;
-	size_t	total;
 	size_t	i;
 
-	total = nmemb * size;
-	if (total / size != nmemb)
+	if (nmemb && (nmemb * size) / nmemb != size)
 		return (NULL);
-	cal = malloc(total);
+	cal = malloc(nmemb * size);
 	if (!cal)
 		return (NULL);
 	i = 0;
-	while (i < total)
+	while (i < nmemb * size)
 	{
 		cal[i] = 0;
 		i++;

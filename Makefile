@@ -6,7 +6,7 @@
 #    By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 16:15:30 by sbocanci          #+#    #+#              #
-#    Updated: 2022/11/28 15:10:15 by sbocanci         ###   ########.fr        #
+#    Updated: 2022/11/29 15:39:53 by sbocanci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,20 +32,20 @@ all: $(NAME)
 $(NAME):
 	$(C) $(SRC)
 	ar rcs $(NAME) $(OBJ)
-	ranlib $(NAME)
+#ranlib $(NAME)
 
 bonus: $(OBJ_B)
 $(OBJ_B):
 	$(C) $(SRC_B)
 	ar rcs $(NAME) $(OBJ_B)
-	ranlib $(NAME)
+#ranlib $(NAME)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJ) $(OBJ_B)
 
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean all bonus
 
 .PHONY: all bonus clean fclean re

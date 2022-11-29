@@ -262,5 +262,23 @@ int		main(void)
 	printf("ft_strlcat: \tlen: '%d'\n", fts_cat);
 	return (0);
 }
+*/
+/* ft_calloc.c test
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <limits.h>
+int	main(void)
+{
+	void	*str1;
+	void	*str2;
 
+	str1 = calloc(0, SSIZE_MAX);
+	str2 = ft_calloc(0, SSIZE_MAX);
+	printf("str1 @ '%p'\n", str1);
+	printf("str2 @ '%p'\n", str2);
+	free(str1);
+	free(str2);
+	return (0);
+}
 */
