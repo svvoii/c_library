@@ -6,13 +6,13 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:47:09 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/28 13:28:53 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:20:09 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	put_nbr(long nbr, char *str, int *len)
+static void	put_nbr(long nbr, char *str, int *len)
 {
 	if (nbr < 0)
 	{

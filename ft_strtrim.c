@@ -6,13 +6,13 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 09:16:45 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/28 11:32:30 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:21:27 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	in_set(char c, const char *set)
+static int	in_set(char c, const char *set)
 {
 	while (*set)
 	{

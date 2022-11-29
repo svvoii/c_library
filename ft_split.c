@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:14:35 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/29 15:50:48 by sbocanci         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:12:16 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ char	**ft_split(char const *s, char c)
 	size_t		words;
 	size_t		i;
 
+	if (!s)
+		return (NULL);
 	words = 0;
 	i = 0;
 	while (i < ft_strlen(s))

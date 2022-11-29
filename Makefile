@@ -6,7 +6,7 @@
 #    By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 16:15:30 by sbocanci          #+#    #+#              #
-#    Updated: 2022/11/29 15:39:53 by sbocanci         ###   ########.fr        #
+#    Updated: 2022/11/29 16:14:21 by sbocanci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,13 +32,15 @@ all: $(NAME)
 $(NAME):
 	$(C) $(SRC)
 	ar rcs $(NAME) $(OBJ)
-#ranlib $(NAME)
 
 bonus: $(OBJ_B)
 $(OBJ_B):
 	$(C) $(SRC_B)
 	ar rcs $(NAME) $(OBJ_B)
-#ranlib $(NAME)
+
+#so:
+#	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC) $(SRC_B)
+#	gcc -nostartfiles -shared -o libft.so $(OBJ) $(OBJ_B)
 
 clean:
 	rm -f $(OBJ) $(OBJ_B)
