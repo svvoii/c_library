@@ -6,7 +6,7 @@
 /*   By: sbocanci <sbocanci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:29:45 by sbocanci          #+#    #+#             */
-/*   Updated: 2022/11/25 13:18:42 by sbocanci         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:24:14 by sbocanci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,12 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
+
+/*
+size_t	ft_strlen(const char *s)
+{
+	if (!*s)
+		return (0);
+	return (ft_strlen(s + 1) + 1);
+}
+*/
