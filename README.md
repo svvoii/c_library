@@ -4,5 +4,5 @@ The C-Library functions, predominantly employed in Linux platforms, most of thes
 
 Completing these set of functions has fortified my acumen in data processing, memory management. This achievement has solidified my proficiency in C programming, allowing me to deliver robust and efficient software solutions. My enhanced skill set now reflects a deeper understanding of both foundational and advanced programming concepts.  
 
---
+---  
 Completed in December 2022.
